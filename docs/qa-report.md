@@ -77,3 +77,20 @@ Measured every page at 320 / 390 / 820 / 1440px (line counts per heading, single
 - Booking and contact forms validate, then open the visitor's mail app with subject and body pre-filled to cabrerakido@gmail.com. Generated email verified, including program, group size, contact details and court-rental acknowledgement.
 - Fallbacks: "Try again" link and "Copy the message" (clipboard verified), plus the direct email and phone number.
 - Payment cards: Venmo and Zelle with copy-number buttons (clipboard verified); no overflow at 320 / 390 / 1440px.
+
+## Live-site QA via Playwright MCP (15 Nov 2026), kido-hoops-academy.vercel.app
+- **Layout:** 11 routes at 320 / 390 / 820 / 1440px. All 200; no horizontal overflow, broken images, missing alt text, hidden-after-animation content or console errors; exactly one H1 per page.
+- **Bug fixed:** the CTA band headline ("Gather your group. Train with Coach Kido.") didn't wrap on tablet and desktop. It overflowed its box and at 1440px ran under the buttons. Cause: the break space sat inside a `nowrap` span. Now verified inside its box at 320–1920px.
+- **Interactions — all pass:**
+  - Mobile menu: open, close on navigation, Esc closes, scroll restored.
+  - Skip link is the first Tab stop, with a visible focus ring.
+  - FAQ accordions open.
+  - `?program=` preselects the right option.
+  - Form validation: inline errors, focus moves to the first invalid field.
+  - The mailto has the correct recipient, subject and group size.
+  - The Venmo/Zelle copy button copies `8182845801`.
+  - `tel:` and `mailto:` links work.
+  - Gallery lightbox: arrow keys, Esc, focus management.
+  - Highlight video autoplays muted in view.
+- **Performance (home, desktop, warm cache):** TTFB 23 ms, LCP ~0.1 s, CLS 0.
+- **Blocker found:** canonical and og:image pointed to kidohoopsacademy.com, which still shows the Porkbun parking page, so link previews failed and Google was pointed at a parked domain. Fixed: SITE_URL now follows Vercel's production domain (vercel.app today, kidohoopsacademy.com automatically once it's the production domain, after a redeploy).

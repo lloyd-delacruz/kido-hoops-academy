@@ -7,10 +7,16 @@
  * anything that is null rather than showing invented details.
  */
 
-// Official public address — used for canonical URLs, sitemap, structured data and link previews.
-// Override with NEXT_PUBLIC_SITE_URL only for testing.
+// Public address used for canonical URLs, sitemap, structured data and link previews.
+// On Vercel this is the project's production domain: kido-hoops-academy.vercel.app today, and
+// automatically kidohoopsacademy.com once that domain is added as the production domain in
+// Vercel (takes effect on the next deploy). PRODUCTION_URL is the fallback for other hosts.
 export const PRODUCTION_URL = "https://kidohoopsacademy.com";
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_URL).replace(/\/$/, "");
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "") ||
+  PRODUCTION_URL
+).replace(/\/$/, "");
 
 export const site = {
   name: "Kido Hoops Academy",

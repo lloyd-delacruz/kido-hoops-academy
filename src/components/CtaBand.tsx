@@ -12,9 +12,10 @@ export default function CtaBand({
       <div className="container cta-band__inner">
         <div>
           <h2 id="cta-title">
-            {title.split(/(?<=\.)\s+/).map((part, i) => (
-              <span key={i} className="nowrap-md">
-                {part}{" "}
+            {title.split(/(?<=\.)\s+/).map((part, i, all) => (
+              <span key={i}>
+                <span className="nowrap-md">{part}</span>
+                {i < all.length - 1 ? " " : ""}
               </span>
             ))}
           </h2>
