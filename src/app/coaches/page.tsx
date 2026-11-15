@@ -10,9 +10,9 @@ import { coach, developmentAreas, site } from "@/lib/site";
 import { breadcrumbLd, coachLd, pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "Coach Kido Cabrera — Former Pro Basketball Player & Skills Trainer",
+  title: "Coach Kido Cabrera, LA Basketball Trainer",
   description:
-    "Meet Coach Kido Cabrera: North Hollywood High 2010 Player of the Year, University of Cebu standout, and former professional player in the Philippines' MPBL and FIBA 3x3 — now training young players in Los Angeles.",
+    "Meet Coach Kido Cabrera: former pro (MPBL, FIBA 3x3), North Hollywood High 2010 Player of the Year, now a youth basketball trainer in Los Angeles.",
   path: "/coaches/",
 });
 

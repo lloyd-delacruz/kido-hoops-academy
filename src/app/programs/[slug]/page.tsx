@@ -19,9 +19,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const p = programs.find((x) => x.slug === slug);
   if (!p) return {};
+  const isGroup = p.slug === "group-training";
   return pageMeta({
-    title: `${p.name} — ${p.price} ${p.priceUnit}`,
-    description: `${p.summary} Youth basketball training in Los Angeles with Coach Kido Cabrera.`,
+    title: isGroup ? "Youth Basketball Group Training, LA" : "Hourly Basketball Training in Los Angeles",
+    description: isGroup
+      ? "Youth basketball group training in Los Angeles: 4 two-hour sessions for 5–10 players, $1,200 for the group ($120 each with 10). Coach Kido Cabrera."
+      : "Hourly basketball training in Los Angeles with former pro Coach Kido Cabrera: $50 per person, per hour. Ball handling, shooting, footwork and game IQ.",
     path: `/programs/${p.slug}/`,
   });
 }

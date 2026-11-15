@@ -34,6 +34,7 @@ export default function Footer() {
                 </li>
               ))}
               <li><Link href="/register/">Book training</Link></li>
+              <li><Link href="/kids-basketball-training-los-angeles/">Kids basketball training in LA</Link></li>
             </ul>
             <p className="footer-title" style={{ marginTop: "2rem" }}>Based in</p>
             <p>{site.city}, {site.region}</p>

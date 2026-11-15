@@ -102,3 +102,7 @@ New flyer (`public/assets/programs/group-training-package-flyer-2026-11-384.*`) 
 - "$15 per player, per hour (10 players)" is derived: $120 ÷ 8 hours.
 - **To confirm:** the **$50 per person, per hour** option isn't on the new flyer. It's still shown on the site; remove it if it's discontinued.
 - The flyer image supplied is only 384×480px. Ask for a higher-resolution original.
+
+## 8. Domain & SEO (15 Nov 2026)
+- Official domain supplied by the client: **kidohoopsacademy.com**, hard-coded as `PRODUCTION_URL` in `src/lib/site.ts`.
+- New page `/kids-basketball-training-los-angeles/` uses only verified facts. See `docs/seo-plan.md` for the off-site checklist.

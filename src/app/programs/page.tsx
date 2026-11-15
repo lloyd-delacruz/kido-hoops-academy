@@ -11,9 +11,9 @@ import { courtRentalNote, developmentAreas, programs, skillsFocus, SITE_URL } fr
 import { breadcrumbLd, pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "Basketball Training Programs & Pricing",
+  title: "Youth Basketball Programs & Prices",
   description:
-    "Kido Hoops Academy programs: Group Training Package — 4 consecutive 2-hour sessions for 5–10 players, $1,200 total ($120 each with 10 players) — or Hourly Training at $50 per person per hour. Los Angeles, CA.",
+    "Youth basketball programs in Los Angeles: $1,200 group package (4 two-hour sessions, 5–10 players, $120 each with 10) or $50 per person per hour.",
   path: "/programs/",
 });
 

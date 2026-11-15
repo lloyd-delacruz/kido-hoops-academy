@@ -8,8 +8,8 @@ import { site } from "@/lib/site";
 import { breadcrumbLd, pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "Contact",
-  description: "Get in touch with Kido Hoops Academy, youth basketball skills training in Los Angeles, California.",
+  title: "Contact a Youth Basketball Coach, LA",
+  description: "Contact Coach Kido Cabrera for kids and youth basketball training in Los Angeles. Call or text (818) 284-5801 or email cabrerakido@gmail.com.",
   path: "/contact/",
 });
 

@@ -12,12 +12,12 @@ import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import Motion from "@/components/Motion";
 import { SITE_URL, site } from "@/lib/site";
-import { organizationLd } from "@/lib/seo";
+import { organizationLd, websiteLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${site.name} | Youth Basketball Training in Los Angeles`,
+    default: `Kids Basketball Training in Los Angeles | ${site.name}`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -29,7 +29,11 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
   twitter: { card: "summary_large_image" },
-  robots: { index: true, follow: true },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
+  category: "sports",
 };
 
 export const viewport: Viewport = {
@@ -52,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main">{children}</main>
         <Footer />
         <JsonLd data={organizationLd} />
+        <JsonLd data={websiteLd} />
         <Motion />
       </body>
     </html>

@@ -7,7 +7,7 @@ import { gallery } from "@/lib/media";
 import { breadcrumbLd, pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "Gallery",
+  title: "Gallery: Coach Kido Cabrera on the Court",
   description: "Photos and highlights from Coach Kido Cabrera's professional basketball career in the Philippines' MPBL.",
   path: "/gallery/",
 });

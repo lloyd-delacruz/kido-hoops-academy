@@ -10,9 +10,9 @@ import { courtRentalNote, programs } from "@/lib/site";
 import { breadcrumbLd, pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "Book Training",
+  title: "Book Kids Basketball Training in LA",
   description:
-    "Book youth basketball training with Coach Kido Cabrera in Los Angeles. Choose the $1,200 Group Training Package (5–10 players, 4 sessions) or $50 per person per hour.",
+    "Book kids basketball training in Los Angeles with Coach Kido Cabrera: $1,200 group package for 5–10 players, or $50 per person per hour.",
   path: "/register/",
 });
 

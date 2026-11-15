@@ -7,13 +7,10 @@
  * anything that is null rather than showing invented details.
  */
 
-// Public URL used for canonical links and link-preview images. On Vercel the production
-// domain is picked up automatically; elsewhere set NEXT_PUBLIC_SITE_URL.
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "") ||
-  "http://localhost:3000"
-).replace(/\/$/, "");
+// Official public address — used for canonical URLs, sitemap, structured data and link previews.
+// Override with NEXT_PUBLIC_SITE_URL only for testing.
+export const PRODUCTION_URL = "https://kidohoopsacademy.com";
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_URL).replace(/\/$/, "");
 
 export const site = {
   name: "Kido Hoops Academy",
@@ -24,7 +21,7 @@ export const site = {
   regionCode: "CA",
   tagline: "Youth basketball skills training in Los Angeles",
   description:
-    "Kido Hoops Academy offers youth basketball skills training in Los Angeles with former professional player Coach Kido Cabrera — ball handling, footwork, shooting, passing and basketball IQ.",
+    "Kids and youth basketball training in Los Angeles with former pro Coach Kido Cabrera. Small-group skills sessions for 5–10 players: ball handling, footwork, shooting, passing and game IQ.",
   // Source: IMG_7615.JPG (coach bio)
   philosophy: "Hard work beats talent when talent fails to work hard.",
   // Source: IMG_7615.JPG

@@ -16,12 +16,12 @@ import { pageMeta, coachLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   ...pageMeta({
-    title: "Youth Basketball Training in Los Angeles",
+    title: "Kids Basketball Training in Los Angeles",
     description:
-      "Youth basketball skills training in Los Angeles with former pro Coach Kido Cabrera. Group package: 4 two-hour sessions for 5–10 players, $1,200 total ($120 each with 10 players). Or $50 per person per hour.",
+      "Kids & youth basketball training in Los Angeles with former pro Coach Kido Cabrera. Small-group skills sessions for 5–10 players from $120 each. Book today.",
     path: "/",
   }),
-  title: { absolute: "Kido Hoops Academy | Youth Basketball Training in Los Angeles" },
+  title: { absolute: "Kids Basketball Training in Los Angeles | Kido Hoops Academy" },
 };
 
 export default function Home() {
@@ -82,7 +82,11 @@ export default function Home() {
               <span className="nowrap">Complete players</span> are <span className="accent">built</span>, <span className="nowrap">rep by rep.</span>
             </h2>
             <p className="lead mt-6">
-              Kido Hoops Academy is Coach Kido Cabrera&apos;s skills program for young hoopers in Los Angeles. Sessions are
+              Kido Hoops Academy offers{" "}
+              <Link href="/kids-basketball-training-los-angeles/" className="inline-link">
+                kids basketball training in Los Angeles
+              </Link>
+              , led by former pro Coach Kido Cabrera. Sessions are
               built on detailed fundamentals and game-like situations — the same habits that carried Kido from the last
               freshman picked at North Hollywood High to professional basketball overseas.
             </p>

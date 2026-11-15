@@ -12,9 +12,9 @@ import { site } from "@/lib/site";
 import { breadcrumbLd, pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "About the Academy",
+  title: "About Our Youth Basketball Academy in LA",
   description:
-    "Kido Hoops Academy is a youth basketball skills program in Los Angeles founded on one belief: hard work beats talent when talent fails to work hard.",
+    "Kido Hoops Academy is a kids and youth basketball skills program in Los Angeles, led by former pro Coach Kido Cabrera. Hard work beats talent.",
   path: "/about/",
 });
 

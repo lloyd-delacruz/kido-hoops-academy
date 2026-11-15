@@ -6,7 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbLd, pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "FAQ",
+  title: "Kids Basketball Training FAQ",
   description:
     "Answers about Kido Hoops Academy pricing, group size, session length, court rental and what players work on. Youth basketball training in Los Angeles.",
   path: "/faq/",
