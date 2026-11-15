@@ -1,0 +1,212 @@
+{
+  "logo": {
+    "w": 1131,
+    "h": 1247
+  },
+  "flyer": [
+    {
+      "w": 480,
+      "h": 720
+    },
+    {
+      "w": 960,
+      "h": 1440
+    },
+    {
+      "w": 1179,
+      "h": 1768
+    }
+  ],
+  "drive-layup": {
+    "src": "/assets/hero/kido-cabrera-layup_IMG_0414",
+    "variants": [
+      {
+        "w": 480,
+        "h": 495
+      },
+      {
+        "w": 960,
+        "h": 990
+      },
+      {
+        "w": 1179,
+        "h": 1216
+      }
+    ]
+  },
+  "dribble": {
+    "src": "/assets/hero/kido-cabrera-dribble-drive_IMG_0405",
+    "variants": [
+      {
+        "w": 480,
+        "h": 390
+      },
+      {
+        "w": 960,
+        "h": 780
+      },
+      {
+        "w": 1179,
+        "h": 958
+      }
+    ]
+  },
+  "portrait-ball": {
+    "src": "/assets/coaches/kido-cabrera-ready-position_IMG_0409",
+    "variants": [
+      {
+        "w": 480,
+        "h": 322
+      },
+      {
+        "w": 960,
+        "h": 643
+      },
+      {
+        "w": 1179,
+        "h": 790
+      }
+    ]
+  },
+  "team-huddle": {
+    "src": "/assets/gallery/team-handshake-bench_IMG_0408",
+    "variants": [
+      {
+        "w": 480,
+        "h": 375
+      },
+      {
+        "w": 960,
+        "h": 751
+      },
+      {
+        "w": 1179,
+        "h": 922
+      }
+    ]
+  },
+  "spot-up": {
+    "src": "/assets/gallery/kido-cabrera-attacking-baseline_IMG_0404",
+    "variants": [
+      {
+        "w": 480,
+        "h": 441
+      },
+      {
+        "w": 960,
+        "h": 883
+      },
+      {
+        "w": 1179,
+        "h": 1084
+      }
+    ]
+  },
+  "jumper": {
+    "src": "/assets/gallery/kido-cabrera-pull-up-jumper_IMG_0413",
+    "variants": [
+      {
+        "w": 480,
+        "h": 414
+      },
+      {
+        "w": 960,
+        "h": 829
+      },
+      {
+        "w": 1179,
+        "h": 1018
+      }
+    ]
+  },
+  "contested": {
+    "src": "/assets/gallery/kido-cabrera-contested-shot_IMG_0410",
+    "variants": [
+      {
+        "w": 480,
+        "h": 337
+      },
+      {
+        "w": 960,
+        "h": 674
+      },
+      {
+        "w": 1179,
+        "h": 828
+      }
+    ]
+  },
+  "transition": {
+    "src": "/assets/gallery/kido-cabrera-transition-offense_IMG_0411",
+    "variants": [
+      {
+        "w": 480,
+        "h": 324
+      },
+      {
+        "w": 960,
+        "h": 648
+      },
+      {
+        "w": 1179,
+        "h": 796
+      }
+    ]
+  },
+  "drive": {
+    "src": "/assets/gallery/kido-cabrera-drive-baseline_IMG_0412",
+    "variants": [
+      {
+        "w": 480,
+        "h": 352
+      },
+      {
+        "w": 960,
+        "h": 704
+      },
+      {
+        "w": 1179,
+        "h": 864
+      }
+    ]
+  },
+  "valenzuela": {
+    "src": "/assets/coaches/kido-cabrera-valenzuela-classic_IMG_1535",
+    "variants": [
+      {
+        "w": 480,
+        "h": 806
+      },
+      {
+        "w": 750,
+        "h": 1260
+      }
+    ]
+  },
+  "player-card": {
+    "src": "/assets/gallery/kido-cabrera-player-feature_6CCDBD46",
+    "variants": [
+      {
+        "w": 480,
+        "h": 360
+      },
+      {
+        "w": 960,
+        "h": 720
+      },
+      {
+        "w": 1179,
+        "h": 884
+      }
+    ]
+  },
+  "valenzuela-card": {
+    "src": "/assets/coaches/kido-cabrera-valenzuela-player-card_IMG_1139",
+    "variants": [
+      {
+        "w": 361,
+        "h": 971
+      }
+    ]
+  }
+}

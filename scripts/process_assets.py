@@ -1,0 +1,162 @@
+#!/usr/bin/env python3
+"""
+Asset pipeline for Kido Hoops Academy.
+
+Reads the original client files (downloaded from the client's Google Drive folder)
+from RAW_DIR, crops phone-screenshot letterboxing, and writes web-optimised
+JPG + WebP variants into public/assets/.
+
+Usage:  RAW_DIR=/path/to/drive/files python3 scripts/process_assets.py
+"""
+import os
+import json
+from pathlib import Path
+
+import numpy as np
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
+
+RAW = Path(os.environ.get("RAW_DIR", "../raw"))
+OUT = Path(__file__).resolve().parent.parent / "public" / "assets"
+WIDTHS = [480, 960, 1440]
+
+
+def content_rows(img: Image.Image, thr: int = 20):
+    """Largest contiguous band of rows that is mostly non-black (removes phone letterboxing)."""
+    a = np.asarray(img.convert("RGB")).astype(int)
+    r = (a.max(axis=2) > thr).mean(axis=1) > 0.5
+    best, start = (0, a.shape[0]), None
+    best = (0, 0)
+    for i, v in enumerate(list(r) + [False]):
+        if v and start is None:
+            start = i
+        if not v and start is not None:
+            if i - start > best[1] - best[0]:
+                best = (start, i)
+            start = None
+    return best
+
+
+def save_variants(img: Image.Image, dest: Path, widths=WIDTHS, quality=82):
+    """Write <dest>-<w>.webp and <dest>-<w>.jpg for each width <= native width."""
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    img = img.convert("RGB")
+    made = []
+    widths = sorted(set([w for w in widths if w < img.width] + [min(max(widths), img.width)]))
+    for w in widths:
+        ww = min(w, img.width)
+        h = round(img.height * ww / img.width)
+        im = img.resize((ww, h), Image.LANCZOS)
+        im.save(f"{dest}-{ww}.webp", "WEBP", quality=quality, method=6)
+        im.save(f"{dest}-{ww}.jpg", "JPEG", quality=quality, optimize=True, progressive=True)
+        made.append({"w": ww, "h": h})
+    return made
+
+
+def crop_band(name, top_trim=0.0, bottom_trim=0.0):
+    im = Image.open(RAW / name)
+    y0, y1 = content_rows(im)
+    h = y1 - y0
+    return im.crop((0, y0 + int(h * top_trim), im.width, y1 - int(h * bottom_trim)))
+
+
+manifest = {}
+
+# ---------- Logo ----------
+logo_src = crop_band("IMG_7531.PNG")
+a = np.asarray(logo_src.convert("RGB")).astype(int)
+navy = np.array([0, 22, 74])
+dist = np.sqrt(((a - navy) ** 2).sum(axis=2))
+mask = dist > 40
+ys, xs = np.where(mask)
+pad = 24
+box = (max(xs.min() - pad, 0), max(ys.min() - pad, 0),
+       min(xs.max() + pad, a.shape[1]), min(ys.max() + pad, a.shape[0]))
+logo = logo_src.crop(box)
+(OUT / "logo").mkdir(parents=True, exist_ok=True)
+logo.save(OUT / "logo" / "kido-hoops-academy-logo-navy.png", optimize=True)
+# Transparent version: soft alpha from distance to the navy background
+la = np.asarray(logo.convert("RGB")).astype(int)
+d = np.sqrt(((la - navy) ** 2).sum(axis=2))
+alpha = np.clip((d - 22) / 40, 0, 1) * 255
+rgba = np.dstack([la, alpha]).astype(np.uint8)
+t = Image.fromarray(rgba, "RGBA")
+t.save(OUT / "logo" / "kido-hoops-academy-logo.png", optimize=True)
+for w in (160, 320, 640):
+    tt = t.resize((w, round(t.height * w / t.width)), Image.LANCZOS)
+    tt.save(OUT / "logo" / f"kido-hoops-academy-logo-{w}.webp", "WEBP", quality=90, method=6)
+    tt.save(OUT / "logo" / f"kido-hoops-academy-logo-{w}.png", optimize=True)
+manifest["logo"] = {"w": t.width, "h": t.height}
+
+# Favicons / app icons (logo on navy square)
+def icon(size, path):
+    canvas = Image.new("RGB", (size, size), (0, 22, 74))
+    lg = logo.copy()
+    lg.thumbnail((int(size * 0.96), int(size * 0.96)), Image.LANCZOS)
+    canvas.paste(lg, ((size - lg.width) // 2, (size - lg.height) // 2))
+    canvas.save(path)
+    return canvas
+
+pub = OUT.parent
+icon(512, pub / "icon-512.png")
+icon(192, pub / "icon-192.png")
+icon(180, pub / "apple-touch-icon.png")
+ico = icon(64, pub / "_tmp.png")
+ico.save(pub / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48), (64, 64)])
+(pub / "_tmp.png").unlink()
+
+# ---------- Program flyer (official pricing) ----------
+flyer = crop_band("IMG_7662.PNG")
+manifest["flyer"] = save_variants(flyer, OUT / "programs" / "group-training-package-flyer_IMG_7662", widths=[480, 960, 1179])
+
+# ---------- Photography ----------
+photos = {
+    # key: (source, subdir, slug, top_trim, bottom_trim)
+    "drive-layup":   ("IMG_0414.PNG", "hero", "kido-cabrera-layup_IMG_0414", 0, 0),
+    "dribble":       ("IMG_0405.PNG", "hero", "kido-cabrera-dribble-drive_IMG_0405", 0, 0),
+    "portrait-ball": ("IMG_0409.PNG", "coaches", "kido-cabrera-ready-position_IMG_0409", 0, 0),
+    "team-huddle":   ("IMG_0408.PNG", "gallery", "team-handshake-bench_IMG_0408", 0, 0),
+    "spot-up":       ("IMG_0404.PNG", "gallery", "kido-cabrera-attacking-baseline_IMG_0404", 0, 0),
+    "jumper":        ("IMG_0413.PNG", "gallery", "kido-cabrera-pull-up-jumper_IMG_0413", 0, 0),
+    "contested":     ("IMG_0410.PNG", "gallery", "kido-cabrera-contested-shot_IMG_0410", 0, 0),
+    "transition":    ("IMG_0411.PNG", "gallery", "kido-cabrera-transition-offense_IMG_0411", 0, 0),
+    "drive":         ("IMG_0412.PNG", "gallery", "kido-cabrera-drive-baseline_IMG_0412", 0, 0),
+    "valenzuela":    ("IMG_1535.PNG", "coaches", "kido-cabrera-valenzuela-classic_IMG_1535", 0, 0),
+    "player-card":   ("6CCDBD46.jpg", "gallery", "kido-cabrera-player-feature_6CCDBD46", 0, 0),
+}
+for key, (src, sub, slug, tt_, bt) in photos.items():
+    if src == "IMG_1535.PNG":
+        im = Image.open(RAW / src)
+        im = im.crop((0, 37, im.width, 1297))
+    else:
+        im = crop_band(src, tt_, bt)
+    manifest[key] = {"src": f"/assets/{sub}/{slug}", "variants": save_variants(im, OUT / sub / slug)}
+
+card = Image.open(RAW / "IMG_1139.JPG")
+manifest["valenzuela-card"] = {"src": "/assets/coaches/kido-cabrera-valenzuela-player-card_IMG_1139",
+                               "variants": save_variants(card, OUT / "coaches" / "kido-cabrera-valenzuela-player-card_IMG_1139", widths=[361])}
+
+# ---------- Open Graph image ----------
+og = Image.new("RGB", (1200, 630), (0, 22, 74))
+dr = ImageDraw.Draw(og)
+# court-line motif
+for r, c in ((520, (14, 44, 110)), (360, (14, 44, 110))):
+    dr.ellipse((1200 - r, 315 - r, 1200 + r, 315 + r), outline=c, width=4)
+dr.rectangle((0, 600, 1200, 630), fill=(253, 90, 0))
+lg = t.copy()
+lg.thumbnail((470, 470), Image.LANCZOS)
+og.paste(lg, (60, (630 - lg.height) // 2), lg)
+def font(sz):
+    for p in ("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+              "/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf"):
+        if os.path.exists(p):
+            return ImageFont.truetype(p, sz)
+    return ImageFont.load_default()
+dr.text((580, 190), "KIDO HOOPS", font=font(68), fill="white")
+dr.text((580, 268), "ACADEMY", font=font(68), fill=(253, 90, 0))
+dr.text((582, 370), "Youth basketball skills training", font=font(30), fill=(220, 226, 240))
+dr.text((582, 412), "with former pro Coach Kido Cabrera", font=font(30), fill=(220, 226, 240))
+dr.text((582, 470), "LOS ANGELES, CA", font=font(26), fill=(242, 179, 61))
+og.save(pub / "og-image.jpg", quality=88)
+
+(OUT / "manifest.json").write_text(json.dumps(manifest, indent=2))
+print("done", len(manifest), "entries")
