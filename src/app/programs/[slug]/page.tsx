@@ -6,7 +6,7 @@ import Photo from "@/components/Photo";
 import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
 import { media } from "@/lib/media";
-import { courtRentalNote, developmentAreas, programs, skillsFocus, SITE_URL } from "@/lib/site";
+import { courtRentalNote, developmentAreas, programs, skillsFocus, trainingFocus, SITE_URL } from "@/lib/site";
 import { breadcrumbLd, pageMeta } from "@/lib/seo";
 
 export const dynamicParams = false;
@@ -68,8 +68,8 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
                     <td>Additional, paid separately</td>
                   </tr>
                   <tr>
-                    <th scope="row">Skill focus</th>
-                    <td>{skillsFocus.join(" · ")}</td>
+                    <th scope="row">{isGroup ? "Training focus" : "Skill focus"}</th>
+                    <td>{(isGroup ? trainingFocus : skillsFocus).join(" · ")}</td>
                   </tr>
                 </tbody>
               </table>

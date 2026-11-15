@@ -93,3 +93,12 @@ Replace these with real academy training photos as soon as possible (see require
   - His **Venmo @username**, which enables a one-tap pay link (Venmo links need a username, not a phone number).
   - The **name shown on his Venmo/Zelle accounts**. The site tells payers to check that the recipient is "Kido Cabrera".
   - Whether "pay after Coach Kido confirms your booking" matches how he wants to take payment (deposit, pay up front, etc.).
+
+## 7. Updated Group Training Package (supplied 15 Nov 2026)
+New flyer (`public/assets/programs/group-training-package-flyer-2026-11-384.*`) **replaces the $800 pricing from IMG_7662**:
+- 4 consecutive sessions, 2 hours each, groups of 5–10 players, **$1,200 for the package**.
+- $120 per player if 10 join (= $1,200 ÷ 10); $240 per player if 5 join (= $1,200 ÷ 5). Court rental separate.
+- Training focus: ball handling & control, footwork & agility, shooting technique, passing & game IQ, skill evaluation & individual growth.
+- "$15 per player, per hour (10 players)" is derived: $120 ÷ 8 hours.
+- **To confirm:** the **$50 per person, per hour** option isn't on the new flyer. It's still shown on the site; remove it if it's discontinued.
+- The flyer image supplied is only 384×480px. Ask for a higher-resolution original.

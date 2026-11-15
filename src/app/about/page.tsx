@@ -115,7 +115,7 @@ export default function AboutPage() {
             </li>
             <li className="step">
               <h3>Clear, fair pricing</h3>
-              <p>A flat $800 group package for 5–10 kids, or $50 per person per hour. Court rental is the only extra.</p>
+              <p>A flat $1,200 group package for 5–10 players ($120 each with a full group), or $50 per person per hour. Court rental is the only extra.</p>
             </li>
           </ol>
           <div className="btn-row mt-8">

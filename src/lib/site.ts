@@ -52,8 +52,17 @@ export const site = {
   },
 } as const;
 
-/** Source: IMG_7662.PNG (official pricing flyer) */
-export const skillsFocus = ["Handles", "Footwork", "Shooting", "Passing"] as const;
+/** Source: updated Group Training Package flyer (15 Nov 2026) */
+export const skillsFocus = ["Ball handling", "Footwork", "Shooting", "Passing", "Game IQ"] as const;
+
+/** Source: updated Group Training Package flyer — "Training Focus" */
+export const trainingFocus = [
+  "Ball handling & control",
+  "Footwork & agility",
+  "Shooting technique",
+  "Passing & game IQ",
+  "Skill evaluation & individual growth",
+] as const;
 
 /** Source: IMG_7613.JPG / IMG_7614.JPG / IMG_7615.JPG (coach bio) */
 export const developmentAreas = [
@@ -78,29 +87,30 @@ export type Program = {
   bestFor: string;
 };
 
-/** Source: IMG_7662.PNG (official pricing flyer) — figures copied exactly */
+/** Source: updated Group Training Package flyer (supplied 15 Nov 2026) — figures copied exactly.
+ *  Hourly rate: from the original flyer IMG_7662.PNG (not on the updated flyer — confirm with client). */
 export const programs: Program[] = [
   {
     slug: "group-training",
     name: "Group Training Package",
     short: "Group Package",
-    price: "$800",
+    price: "$1,200",
     priceUnit: "total for the group",
     summary:
-      "Four consecutive two-hour sessions for a group of 5–10 kids — eight total hours of skill work with Coach Kido. One flat coach fee covers all four sessions, split however your group chooses.",
+      "Four consecutive two-hour sessions of coach-led training for a group of 5–10 players. One flat $1,200 package price, shared across your group — the more players who join, the less each pays.",
     facts: [
       { label: "Sessions", value: "4 consecutive sessions" },
       { label: "Session length", value: "2 hours each" },
       { label: "Total training", value: "8 hours" },
-      { label: "Group size", value: "5–10 kids" },
-      { label: "Price", value: "$800 for the group — coach fee only" },
+      { label: "Group size", value: "5–10 players" },
+      { label: "Price", value: "$1,200 for the group" },
     ],
     breakdown: [
-      { amount: "$80", label: "per child for the entire 4-session package" },
-      { amount: "$20", label: "per child, per 2-hour session" },
-      { amount: "$10", label: "per child, per hour" },
+      { amount: "$120", label: "per player if 10 players join" },
+      { amount: "$240", label: "per player if 5 players join" },
+      { amount: "$15", label: "per player, per hour (10 players)" },
     ],
-    breakdownNote: "Example: 10 kids join — $800 ÷ 10 kids = $80 per child.",
+    breakdownNote: "From the academy's pricing: $1,200 ÷ 10 players = $120 each; $1,200 ÷ 5 players = $240 each.",
     bestFor: "Teammates, friends and families who want to train together at the best value.",
   },
   {
@@ -119,7 +129,7 @@ export const programs: Program[] = [
   },
 ];
 
-/** Source: IMG_7662.PNG */
+/** Source: original and updated flyers */
 export const courtRentalNote = "Court rental is additional and paid separately.";
 
 /** Source: IMG_7613.JPG / IMG_7614.JPG / IMG_7615.JPG */

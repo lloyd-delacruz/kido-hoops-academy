@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   ...pageMeta({
     title: "Youth Basketball Training in Los Angeles",
     description:
-      "Youth basketball skills training in Los Angeles with former pro Coach Kido Cabrera. Group package: 4 two-hour sessions for 5–10 kids, $800 total. Or $50 per person per hour.",
+      "Youth basketball skills training in Los Angeles with former pro Coach Kido Cabrera. Group package: 4 two-hour sessions for 5–10 players, $1,200 total ($120 each with 10 players). Or $50 per person per hour.",
     path: "/",
   }),
   title: { absolute: "Kido Hoops Academy | Youth Basketball Training in Los Angeles" },
@@ -59,8 +59,8 @@ export default function Home() {
               </Link>
             </div>
             <ul className="hero__meta" data-hero-fade>
-              <li>Groups of 5–10 kids</li>
-              <li>From $10 per child / hour</li>
+              <li>Groups of 5–10 players</li>
+              <li>From $120 per player</li>
               <li>Los Angeles</li>
             </ul>
           </div>
@@ -129,8 +129,8 @@ export default function Home() {
               <ul className="program__facts">
                 <li>4 consecutive sessions · 2 hours each</li>
                 <li>8 total training hours</li>
-                <li>For groups of 5–10 kids</li>
-                <li>With 10 kids: $80 each — just $10 per child per hour</li>
+                <li>For groups of 5–10 players</li>
+                <li>$120 per player with 10 players · $240 with 5</li>
               </ul>
               <div className="program__actions">
                 <Link href="/register/?program=group-training" className="btn btn--navy">
@@ -151,7 +151,7 @@ export default function Home() {
               <ul className="program__facts">
                 <li>Book by the hour</li>
                 <li>A 2-hour session is $100 per person</li>
-                <li>Same skill focus: handles, footwork, shooting, passing</li>
+                <li>Same focus: ball handling, footwork, shooting, passing</li>
               </ul>
               <div className="program__actions">
                 <Link href="/register/?program=hourly-training" className="btn">
@@ -264,7 +264,7 @@ export default function Home() {
           <ol className="steps" data-stagger>
             <li className="step">
               <h3>Gather your group</h3>
-              <p>Bring together 5–10 kids for the package — teammates, friends or siblings — or book by the hour.</p>
+              <p>Bring together 5–10 players for the package — teammates, friends or siblings — or book by the hour.</p>
             </li>
             <li className="step">
               <h3>Send an inquiry</h3>

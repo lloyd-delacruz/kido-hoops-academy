@@ -44,9 +44,9 @@ export const media = {
     "Coach Kido Cabrera on the ball during a professional game", "6CCDBD46-2EB4-4D26-A40B-3D8133F37BE4.jpg"),
   card: m("/assets/coaches/kido-cabrera-valenzuela-player-card_IMG_1139", [361], 971,
     "Valenzuela Classic MPBL Datu Cup player card for Kido Cabrera, guard, number 24", "IMG_1139.JPG"),
-  flyer: m("/assets/programs/group-training-package-flyer_IMG_7662", STD, 1768,
-    "Kido Hoops Academy pricing flyer: Group Training Package, 4 consecutive two-hour sessions for groups of 5 to 10 kids, $800 total for the group; or $50 per person per hour. Court rental is additional.",
-    "IMG_7662.PNG"),
+  flyer: m("/assets/programs/group-training-package-flyer-2026-11", [384], 480,
+    "Kido Hoops Academy Group Training Package flyer: 4 consecutive 2-hour sessions for groups of 5 to 10 players, $1,200 for the package; $120 per player if 10 join, $240 per player if 5 join. Court rental separate.",
+    "Group Training Package flyer (supplied 15 Nov 2026)"),
 } satisfies Record<string, Media>;
 
 export const gallery: { item: Media; caption: string }[] = [

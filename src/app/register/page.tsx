@@ -12,7 +12,7 @@ import { breadcrumbLd, pageMeta } from "@/lib/seo";
 export const metadata = pageMeta({
   title: "Book Training",
   description:
-    "Book youth basketball training with Coach Kido Cabrera in Los Angeles. Choose the $800 Group Training Package (5–10 kids, 4 sessions) or $50 per person per hour.",
+    "Book youth basketball training with Coach Kido Cabrera in Los Angeles. Choose the $1,200 Group Training Package (5–10 players, 4 sessions) or $50 per person per hour.",
   path: "/register/",
 });
 
@@ -33,7 +33,7 @@ export default function RegisterPage() {
             <ol className="timeline mt-7">
               <li>
                 <span className="timeline__stage">Step 1</span>
-                <div><h3>Choose your option</h3><p>{programs[0].name} ({programs[0].price} for 5–10 kids) or {programs[1].name} ({programs[1].price} per person, per hour).</p></div>
+                <div><h3>Choose your option</h3><p>{programs[0].name} ({programs[0].price} for 5–10 players) or {programs[1].name} ({programs[1].price} per person, per hour).</p></div>
               </li>
               <li>
                 <span className="timeline__stage">Step 2</span>

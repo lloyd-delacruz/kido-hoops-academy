@@ -13,7 +13,7 @@ import { breadcrumbLd, pageMeta } from "@/lib/seo";
 export const metadata = pageMeta({
   title: "Basketball Training Programs & Pricing",
   description:
-    "Kido Hoops Academy programs: Group Training Package — 4 consecutive 2-hour sessions for 5–10 kids, $800 total — or Hourly Training at $50 per person per hour. Los Angeles, CA.",
+    "Kido Hoops Academy programs: Group Training Package — 4 consecutive 2-hour sessions for 5–10 players, $1,200 total ($120 each with 10 players) — or Hourly Training at $50 per person per hour. Los Angeles, CA.",
   path: "/programs/",
 });
 
@@ -69,20 +69,20 @@ export default function ProgramsPage() {
             <p className="eyebrow">The math</p>
             <h2 id="compare-title" className="h2 mt-6"><span className="nowrap">The more who join,</span> <span className="nowrap">the less each pays.</span></h2>
             <p className="lead mt-6">
-              The group package is one flat $800 coach fee for all four sessions, shared across the group. With a full group of
-              10, that&apos;s $80 per child for eight hours of training.
+              The group package is one flat $1,200 price for all four sessions, shared across the group. With a full group of
+              10, that&apos;s $120 per player for eight hours of coach-led training.
             </p>
             <div className="breakdown">
-              <div><strong>$80</strong><span>per child, full package (10 kids)</span></div>
-              <div><strong>$20</strong><span>per child, per 2-hour session</span></div>
-              <div><strong>$10</strong><span>per child, per hour</span></div>
+              <div><strong>$120</strong><span>per player if 10 players join</span></div>
+              <div><strong>$240</strong><span>per player if 5 players join</span></div>
+              <div><strong>$15</strong><span>per player, per hour (10 players)</span></div>
             </div>
             <p className="mt-6" style={{ color: "var(--ink-2)" }}>
               Compared with hourly training at $50 per person, per hour. Figures from the academy&apos;s official pricing.
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <a className="flyer-thumb" href={`${media.flyer.base}-1179.jpg`} target="_blank" rel="noopener" style={{ display: "block" }}>
+            <a className="flyer-thumb" href={`${media.flyer.base}-384.jpg`} target="_blank" rel="noopener" style={{ display: "block" }}>
               <Photo media={media.flyer} sizes="340px" />
               <span className="sr-only">(opens the full-size pricing flyer in a new tab)</span>
             </a>

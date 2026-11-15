@@ -37,7 +37,7 @@ export default function InquiryForm({ mode = "booking", defaultProgram }: { mode
     if (mode === "booking") {
       if (program === "group-training") {
         const size = Number(fd.get("groupSize"));
-        if (!size || size < 5 || size > 10) e.groupSize = "The group package is for 5–10 kids.";
+        if (!size || size < 5 || size > 10) e.groupSize = "The group package is for 5–10 players.";
       }
       if (!fd.get("guardian")) e.guardian = "Please confirm you are the parent/guardian or the adult arranging training.";
     } else if (message.length < 10) {
@@ -55,7 +55,7 @@ export default function InquiryForm({ mode = "booking", defaultProgram }: { mode
       subject = `Training inquiry: ${p.name} (${get("name")})`;
       lines.push(`Hi Coach Kido,`, ``, `I'd like to book training with Kido Hoops Academy.`, ``);
       lines.push(`Program: ${p.name} (${p.price} ${p.priceUnit})`);
-      if (p.slug === "group-training") lines.push(`Number of kids: ${get("groupSize")}`);
+      if (p.slug === "group-training") lines.push(`Number of players: ${get("groupSize")}`);
       else if (get("players")) lines.push(`Number of players: ${get("players")}`);
     } else {
       subject = `Website inquiry: ${get("topic") || "General question"} (${get("name")})`;
@@ -189,7 +189,7 @@ export default function InquiryForm({ mode = "booking", defaultProgram }: { mode
       {mode === "booking" ? (
         program === "group-training" ? (
           <div className="field">
-            <label htmlFor={id("groupSize")}>Number of kids</label>
+            <label htmlFor={id("groupSize")}>Number of players</label>
             <input id={id("groupSize")} name="groupSize" type="number" min={5} max={10} inputMode="numeric" {...a11y("groupSize")} />
             {err("groupSize") || <p className="field__hint">Groups of 5–10.</p>}
           </div>

@@ -12,14 +12,14 @@ export const metadata = pageMeta({
   path: "/faq/",
 });
 
-/** Every answer below is drawn from the official pricing flyer (IMG_7662) or coach bio. */
+/** Every answer below is drawn from the official pricing flyers or coach bio. */
 const groups: { title: string; items: { q: string; a: string }[] }[] = [
   {
     title: "Pricing & packages",
     items: [
       {
         q: "How much does the Group Training Package cost?",
-        a: "$800 total for the group. That covers all four sessions and is the coach fee only. With 10 kids, that works out to $80 per child for the entire package — $20 per child per 2-hour session, or $10 per child per hour.",
+        a: "$1,200 total for the group, covering all four 2-hour sessions. Split across the group, that's $120 per player if 10 players join, or $240 per player if 5 join. Court rental is separate.",
       },
       { q: "Is there an option besides the group package?", a: "Yes. Hourly training is $50 per person, per hour. A 2-hour session is $100 per person." },
       { q: "Is the court included?", a: "No. Court rental is additional and paid separately from the coach fee." },
@@ -31,8 +31,8 @@ const groups: { title: string; items: { q: string; a: string }[] }[] = [
     title: "Sessions & groups",
     items: [
       { q: "How many sessions are in the group package?", a: "Four consecutive sessions, two hours each — eight total training hours." },
-      { q: "How big can a group be?", a: "The group package is for groups of 5–10 kids." },
-      { q: "What do players work on?", a: "Handles, footwork, shooting and passing, along with defensive fundamentals and basketball IQ through game-like situations." },
+      { q: "How big can a group be?", a: "The group package is for groups of 5–10 players." },
+      { q: "What do players work on?", a: "Ball handling and control, footwork and agility, shooting technique, passing and game IQ, plus skill evaluation and individual growth for each player." },
     ],
   },
   {

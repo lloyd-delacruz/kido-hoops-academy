@@ -4,7 +4,7 @@
 |---|---|---|---|
 | `/` | Value proposition, programs, method, coach, philosophy + highlight, booking steps | Book training | ✅ |
 | `/programs/` | Both options, price math, official flyer, skill focus | Book now | ✅ |
-| `/programs/group-training/` | $800 package detail and per-child breakdown | Book the package | ✅ |
+| `/programs/group-training/` | $1,200 package detail and per-player breakdown | Book the package | ✅ |
 | `/programs/hourly-training/` | $50/person/hour detail | Book hourly | ✅ |
 | `/coaches/` | Coach Kido Cabrera bio, stats, career timeline, philosophy, specialties | Train with Coach Kido | ✅ |
 | `/about/` | Story, mission, values, why Kido Hoops | See programs | ✅ |
