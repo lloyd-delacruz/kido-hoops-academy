@@ -79,7 +79,7 @@ export default function Home() {
           <Reveal>
             <p className="eyebrow">The academy</p>
             <h2 id="intro-title" className="h2 mt-6">
-              Complete players are <span className="accent">built</span>, rep by rep.
+              <span className="nowrap">Complete players</span> are <span className="accent">built</span>, <span className="nowrap">rep by rep.</span>
             </h2>
             <p className="lead mt-6">
               Kido Hoops Academy is Coach Kido Cabrera&apos;s skills program for young hoopers in Los Angeles. Sessions are
@@ -175,7 +175,7 @@ export default function Home() {
           <Reveal className="section-head">
             <p className="eyebrow">What we train</p>
             <h2 id="method-title" className="h2">
-              Every part of the <span className="accent">game.</span>
+              Every part <span className="nowrap">of the <span className="accent">game.</span></span>
             </h2>
             <p className="lead">
               Coach Kido&apos;s sessions develop complete players — not just shooters or just ball handlers — through detailed skill
@@ -212,7 +212,7 @@ export default function Home() {
           <Reveal delay={0.1}>
             <p className="eyebrow">Meet your coach</p>
             <h2 id="coach-title" className="h2 mt-6">
-              Coach Kido <span className="accent">Cabrera</span>
+              <span className="nowrap">Coach Kido</span> <span className="accent nowrap">Cabrera</span>
             </h2>
             <p className="lead mt-6">{coach.intro}</p>
             <ol className="timeline mt-7">

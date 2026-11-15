@@ -22,7 +22,7 @@ export default function ProgramsPage() {
     <>
       <PageHero
         eyebrow="Programs & pricing"
-        title={<>Train together. <span className="accent">Pay less.</span></>}
+        title={<><span className="nowrap">Train together.</span> <span className="accent nowrap">Pay less.</span></>}
         lead="Two straightforward options for young players in Los Angeles. Both cover the same core skills — handles, footwork, shooting and passing."
         crumbs={[{ label: "Programs" }]}
         image={media.jumper}
@@ -67,7 +67,7 @@ export default function ProgramsPage() {
         <div className="container split split--wide-left">
           <Reveal>
             <p className="eyebrow">The math</p>
-            <h2 id="compare-title" className="h2 mt-6">The more who join, the less each pays.</h2>
+            <h2 id="compare-title" className="h2 mt-6"><span className="nowrap">The more who join,</span> <span className="nowrap">the less each pays.</span></h2>
             <p className="lead mt-6">
               The group package is one flat $800 coach fee for all four sessions, shared across the group. With a full group of
               10, that&apos;s $80 per child for eight hours of training.

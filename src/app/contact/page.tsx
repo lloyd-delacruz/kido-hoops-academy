@@ -33,7 +33,7 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title={<>Let&apos;s <span className="accent">talk hoops.</span></>}
+        title={<>Let&apos;s <span className="accent nowrap">talk hoops.</span></>}
         lead="Questions about training, groups or pricing? Call, email or send a message and Coach Kido will get back to you."
         crumbs={[{ label: "Contact" }]}
       />

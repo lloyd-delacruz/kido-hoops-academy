@@ -45,3 +45,30 @@ Every price, program detail and coach claim is centralised in `src/lib/site.ts` 
 - Hero verified visually at every width: the headline, copy and CTA stay layered on the photo; nothing separates or drops below the image.
 - Reduced-motion mode: the hero renders fully with no transforms.
 - Unsplash images couldn't load in the test environment (network-restricted), so the client-photo fallback was exercised; they load normally on the open web.
+
+## Update: typography & spacing audit (15 Nov 2026)
+Measured every page at 320 / 390 / 820 / 1440px (line counts per heading, single-word last lines, section heights, overflow).
+
+**Headline wrapping**
+- Removed the 16ch cap on page titles that forced breaks like "Train together. Pay / less." and "Group Training / Package". They now fit on one line on desktop.
+- Phrase-level no-break spans keep mobile breaks at natural points ("Train together." / "Pay less.", "Coach Kido" / "Cabrera").
+- `text-wrap: balance` on headings and `pretty` on body text, to avoid single words on a last line.
+
+**Spacing tightened**
+| Element | Before | After |
+|---|---|---|
+| Section padding (1440px) | 134px | ~94px |
+| Section padding (mobile) | 72px | 56px |
+| Page-hero height | 465px | 403px |
+| Column gaps | 96px | 64–72px |
+| Photo bands | 620px | 500px |
+| CTA band, footer and section-head margins | — | reduced |
+
+**Layout**
+- FAQ: two columns on desktop (sticky group title on the left, questions on the right) instead of a 900px column with an empty right side.
+- CTA headline: two balanced lines instead of three.
+- "Per person, per hour" fits on two lines instead of three.
+- Coach photo is larger, and the stats row has a divider.
+- Mobile: timeline labels stack above each item (the 110px label column is gone); skill cards show the number beside the title in a compact row and go two-up from 560px; program-card buttons sit side by side when they fit.
+
+**Result:** no horizontal overflow at 320, 360, 390, 820 or 1440px; lint, typecheck and build all clean.

@@ -21,7 +21,7 @@ export default function CoachesPage() {
     <>
       <PageHero
         eyebrow="Coaching team"
-        title={<>Coach Kido <span className="accent">Cabrera</span></>}
+        title={<><span className="nowrap">Coach Kido</span> <span className="accent nowrap">Cabrera</span></>}
         lead={coach.role}
         crumbs={[{ label: "Coach" }]}
       />
@@ -35,7 +35,7 @@ export default function CoachesPage() {
           </Reveal>
           <Reveal delay={0.1} className="prose">
             <p className="eyebrow">The journey</p>
-            <h2 id="bio-title" className="h2 mt-6">From last pick to <span className="accent">pro.</span></h2>
+            <h2 id="bio-title" className="h2 mt-6"><span className="nowrap">From last pick</span> <span className="nowrap">to <span className="accent">pro.</span></span></h2>
             <p className="lead mt-6">{coach.intro}</p>
             <p className="mt-6">
               His basketball journey began at North Hollywood High School, where he went from being the last freshman selected

@@ -70,7 +70,7 @@ export default function AboutPage() {
           <div className="split">
             <Reveal>
               <p className="eyebrow">Mission</p>
-              <h2 id="mission-title" className="h2 mt-6">Confident. Skilled. <span className="accent">Complete.</span></h2>
+              <h2 id="mission-title" className="h2 mt-6"><span className="nowrap">Confident. Skilled.</span> <span className="accent">Complete.</span></h2>
               <p className="lead mt-6">{site.mission}</p>
             </Reveal>
             <Reveal delay={0.1}>

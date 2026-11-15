@@ -11,7 +11,13 @@ export default function CtaBand({
     <section className="cta-band" aria-labelledby="cta-title">
       <div className="container cta-band__inner">
         <div>
-          <h2 id="cta-title">{title}</h2>
+          <h2 id="cta-title">
+            {title.split(/(?<=\.)\s+/).map((part, i) => (
+              <span key={i} className="nowrap-md">
+                {part}{" "}
+              </span>
+            ))}
+          </h2>
           <p>{body}</p>
         </div>
         <div className="btn-row">
