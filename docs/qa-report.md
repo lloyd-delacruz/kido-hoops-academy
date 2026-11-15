@@ -33,7 +33,7 @@ Skip link, semantic landmarks, single H1 per page, labelled forms, visible gold 
 Every price, program detail and coach claim is centralised in `src/lib/site.ts` and traced to source files in `docs/content-inventory.md`. Nothing about locations, schedules, ages, testimonials or contact details was invented; those are hidden until supplied.
 
 ## Remaining deployment blockers
-1. Contact email/phone (`site.contact`).
+1. ~~Contact email/phone~~: added 15 Nov 2026.
 2. Form backend endpoint (`NEXT_PUBLIC_FORM_ENDPOINT`).
 3. Production domain (`NEXT_PUBLIC_SITE_URL`). Canonicals and the sitemap currently fall back to `http://localhost:3000`.
 4. Client sign-off on the coach bio (a ChatGPT draft) and on rights to the MPBL photos and broadcast clip.

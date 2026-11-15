@@ -35,6 +35,8 @@ export const organizationLd = {
   image: `${SITE_URL}/og-image.jpg`,
   description: site.description,
   sport: "Basketball",
+  email: site.contact.email ?? undefined,
+  telephone: site.contact.phoneHref,
   slogan: site.philosophy,
   areaServed: { "@type": "City", name: "Los Angeles", containedInPlace: { "@type": "State", name: "California" } },
   founder: { "@id": `${SITE_URL}/coaches/#kido-cabrera` },

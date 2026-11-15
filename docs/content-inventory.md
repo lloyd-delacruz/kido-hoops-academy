@@ -43,6 +43,8 @@ All published business facts live in `src/lib/site.ts`. Each one traces back to 
 - Philosophy: "Hard work beats talent when talent fails to work hard."
 - Mission: develop confident, skilled and complete players prepared to compete at the highest level.
 
+**Contact** (supplied directly by the client, 15 Nov 2026): cabrerakido@gmail.com · (818) 284-5801.
+
 **Location**: Los Angeles, California. This comes from the project brief only; no Drive file states it.
 
 ## 3. Missing information (content requirements)
@@ -51,7 +53,7 @@ These are needed before launch. The UI hides each one until it is filled in `src
 
 | # | Missing | Impact | Where it goes |
 |---|---|---|---|
-| 1 | **Contact email and phone** | No way for families to reach the academy directly | `site.contact` → footer, Contact page |
+| 1 | ~~Contact email and phone~~ ✅ supplied 15 Nov 2026 | — | `site.contact` → footer, Contact page, JSON-LD |
 | 2 | **Form backend** (Formspree, Netlify Forms, email service…) | Inquiry forms validate but do not send | `NEXT_PUBLIC_FORM_ENDPOINT` |
 | 3 | **Training locations / gyms** (address, parking) | No Schedule & Locations page, no Google Map, no local-business address schema | New `/locations/` page |
 | 4 | **Schedule** (days, times, start dates) | Schedule page not published | `/locations/` or `/programs/` |

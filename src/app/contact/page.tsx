@@ -34,7 +34,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title={<>Let&apos;s <span className="accent">talk hoops.</span></>}
-        lead="Questions about training, groups or pricing? Send a message and Coach Kido will get back to you."
+        lead="Questions about training, groups or pricing? Call, email or send a message and Coach Kido will get back to you."
         crumbs={[{ label: "Contact" }]}
       />
       <section className="section">
@@ -56,7 +56,7 @@ export default function ContactPage() {
               {site.contact.phone && (
                 <li>
                   <span className="ico"><Phone /></span>
-                  <div><strong>Phone</strong><a href={`tel:${site.contact.phone}`}>{site.contact.phone}</a></div>
+                  <div><strong>Phone</strong><a href={`tel:${site.contact.phoneHref}`}>{site.contact.phone}</a></div>
                 </li>
               )}
             </ul>

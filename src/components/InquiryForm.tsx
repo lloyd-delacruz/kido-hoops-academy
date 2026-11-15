@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
-import { FORM_ENDPOINT, programs } from "@/lib/site";
+import { FORM_ENDPOINT, programs, site } from "@/lib/site";
 
 type Mode = "booking" | "contact";
 type Errors = Partial<Record<string, string>>;
@@ -223,8 +223,9 @@ export default function InquiryForm({ mode = "booking", defaultProgram }: { mode
           <div className="form-status form-status--warn" role="status">
             <h3>Almost there.</h3>
             <p>
-              Your details look good, but online inquiries aren&apos;t switched on yet, so nothing has been sent. Please check
-              back soon. (Site owner: set <code>NEXT_PUBLIC_FORM_ENDPOINT</code> to enable submissions.)
+              Your details look good, but online inquiries aren&apos;t switched on yet, so nothing has been sent. Please reach
+              Coach Kido directly at <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a> or{" "}
+              <a href={`tel:${site.contact.phoneHref}`}>{site.contact.phone}</a>.
             </p>
           </div>
         )}

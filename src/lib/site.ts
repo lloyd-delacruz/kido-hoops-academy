@@ -25,10 +25,11 @@ export const site = {
   // Source: IMG_7615.JPG
   mission:
     "To develop confident, skilled and complete players who are prepared to compete at the highest level.",
-  // Not yet supplied by client — intentionally null (hidden in UI)
+  // Source: supplied directly by the client (15 Nov 2026)
   contact: {
-    email: null as string | null,
-    phone: null as string | null,
+    email: "cabrerakido@gmail.com" as string | null,
+    phone: "(818) 284-5801" as string | null,
+    phoneHref: "+18182845801",
   },
   social: {
     instagram: null as string | null,

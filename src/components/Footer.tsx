@@ -38,7 +38,7 @@ export default function Footer() {
             <p className="footer-title" style={{ marginTop: "2rem" }}>Based in</p>
             <p>{site.city}, {site.region}</p>
             {site.contact.email && <p><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></p>}
-            {site.contact.phone && <p><a href={`tel:${site.contact.phone}`}>{site.contact.phone}</a></p>}
+            {site.contact.phone && <p><a href={`tel:${site.contact.phoneHref}`}>{site.contact.phone}</a></p>}
             {socials.length > 0 && (
               <ul className="footer-list" style={{ marginTop: "1rem" }}>
                 {socials.map(([k, url]) => (
