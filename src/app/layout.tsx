@@ -22,16 +22,11 @@ export const metadata: Metadata = {
   },
   description: site.description,
   applicationName: site.name,
-  icons: {
-    icon: [{ url: "/favicon.ico" }, { url: "/icon-192.png", type: "image/png", sizes: "192x192" }],
-    apple: "/apple-touch-icon.png",
-  },
   manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     siteName: site.name,
     locale: "en_US",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: site.name }],
   },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },

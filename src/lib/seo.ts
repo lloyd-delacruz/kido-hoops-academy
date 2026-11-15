@@ -14,13 +14,13 @@ export function pageMeta({ title, description, path }: { title: string; descript
       title: `${title} | ${site.name}`,
       description,
       locale: "en_US",
-      images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630, alt: `${site.name} — ${site.tagline}` }],
+      images: [{ url: "/opengraph-image.jpg", width: 1200, height: 630, alt: `${site.name} logo`, type: "image/jpeg" }],
     },
     twitter: {
       card: "summary_large_image",
       title: `${title} | ${site.name}`,
       description,
-      images: [`${SITE_URL}/og-image.jpg`],
+      images: ["/twitter-image.jpg"],
     },
   };
 }
@@ -32,7 +32,7 @@ export const organizationLd = {
   name: site.name,
   url: SITE_URL,
   logo: `${SITE_URL}/icon-512.png`,
-  image: `${SITE_URL}/og-image.jpg`,
+  image: `${SITE_URL}/opengraph-image.jpg`,
   description: site.description,
   sport: "Basketball",
   email: site.contact.email ?? undefined,
