@@ -272,7 +272,7 @@ export default function Home() {
             </li>
             <li className="step">
               <h3>Get on the court</h3>
-              <p>Confirm your dates — court rental is additional and paid separately — then put in the work with Coach Kido.</p>
+              <p>Coach Kido confirms your dates, you pay by Venmo or Zelle (court rental is separate), then it&apos;s time to put in the work.</p>
             </li>
           </ol>
         </div>

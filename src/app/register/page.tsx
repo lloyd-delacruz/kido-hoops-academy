@@ -5,6 +5,7 @@ import Reveal from "@/components/Reveal";
 import InquiryForm from "@/components/InquiryForm";
 import JsonLd from "@/components/JsonLd";
 import RegisterForm from "./RegisterForm";
+import PaymentOptions from "@/components/PaymentOptions";
 import { courtRentalNote, programs } from "@/lib/site";
 import { breadcrumbLd, pageMeta } from "@/lib/seo";
 
@@ -36,11 +37,11 @@ export default function RegisterPage() {
               </li>
               <li>
                 <span className="timeline__stage">Step 2</span>
-                <div><h3>Send your inquiry</h3><p>Share your group size, goals and general availability. No payment is taken online.</p></div>
+                <div><h3>Send your inquiry</h3><p>Share your group size, goals and general availability. The form opens your email app, ready to send to Coach Kido.</p></div>
               </li>
               <li>
                 <span className="timeline__stage">Step 3</span>
-                <div><h3>Confirm &amp; train</h3><p>Coach Kido follows up to lock in dates. {courtRentalNote}</p></div>
+                <div><h3>Confirm, pay &amp; train</h3><p>Coach Kido confirms your dates and the amount, then you pay by <a className="text-link" href="#payment">Venmo or Zelle</a>. {courtRentalNote}</p></div>
               </li>
             </ol>
             <p className="mt-6">
@@ -54,6 +55,21 @@ export default function RegisterPage() {
                 <RegisterForm />
               </Suspense>
             </div>
+          </Reveal>
+        </div>
+      </section>
+      <section className="section section--paper2" id="payment" aria-labelledby="pay-title">
+        <div className="container pay-band">
+          <Reveal>
+            <p className="eyebrow">Payment</p>
+            <h2 id="pay-title" className="h2 mt-6">Pay with Venmo or Zelle.</h2>
+            <p className="lead mt-6">
+              No card forms and no fees. Once Coach Kido confirms your booking, send payment straight to him with Venmo or Zelle
+              using his phone number.
+            </p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <PaymentOptions />
           </Reveal>
         </div>
       </section>

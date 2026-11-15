@@ -34,7 +34,7 @@ Every price, program detail and coach claim is centralised in `src/lib/site.ts` 
 
 ## Remaining deployment blockers
 1. ~~Contact email/phone~~: added 15 Nov 2026.
-2. Form backend endpoint (`NEXT_PUBLIC_FORM_ENDPOINT`).
+2. ~~Form backend~~: forms now hand off to the visitor's email app.
 3. Production domain (`NEXT_PUBLIC_SITE_URL`). Canonicals and the sitemap currently fall back to `http://localhost:3000`.
 4. Client sign-off on the coach bio (a ChatGPT draft) and on rights to the MPBL photos and broadcast clip.
 5. Training locations and schedule (for the Schedule & Locations page and Google Maps).
@@ -72,3 +72,8 @@ Measured every page at 320 / 390 / 820 / 1440px (line counts per heading, single
 - Mobile: timeline labels stack above each item (the 110px label column is gone); skill cards show the number beside the title in a compact row and go two-up from 560px; program-card buttons sit side by side when they fit.
 
 **Result:** no horizontal overflow at 320, 360, 390, 820 or 1440px; lint, typecheck and build all clean.
+
+## Update: email inquiries + Venmo/Zelle (15 Nov 2026)
+- Booking and contact forms validate, then open the visitor's mail app with subject and body pre-filled to cabrerakido@gmail.com. Generated email verified, including program, group size, contact details and court-rental acknowledgement.
+- Fallbacks: "Try again" link and "Copy the message" (clipboard verified), plus the direct email and phone number.
+- Payment cards: Venmo and Zelle with copy-number buttons (clipboard verified); no overflow at 320 / 390 / 1440px.

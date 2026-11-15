@@ -1,21 +1,21 @@
 "use client";
 
 import { useId, useState } from "react";
-import { FORM_ENDPOINT, programs, site } from "@/lib/site";
+import { programs, site } from "@/lib/site";
 
 type Mode = "booking" | "contact";
 type Errors = Partial<Record<string, string>>;
-type Status = { kind: "idle" } | { kind: "sending" } | { kind: "ok" } | { kind: "not-connected" } | { kind: "error"; msg: string };
+type Status = { kind: "idle" } | { kind: "opened"; href: string; text: string };
 
 const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 /**
- * Inquiry form. Collects only what is needed to follow up (no child names,
- * birthdates, medical details or payment info).
- *
- * Submissions go to NEXT_PUBLIC_FORM_ENDPOINT (JSON POST). If no endpoint is
- * configured, the form validates and then tells the visitor plainly that
- * online inquiries aren't connected yet — it never pretends to have sent.
+ * Inquiry form — no backend, no form service.
+ * On submit it validates, then opens the visitor's own email app with a
+ * pre-written message addressed to the coach (mailto:). The visitor presses
+ * Send in their mail app, so the inquiry lands straight in the coach's inbox.
+ * Collects only what's needed to follow up (no child names, birthdates,
+ * medical details or payment info).
  */
 export default function InquiryForm({ mode = "booking", defaultProgram }: { mode?: Mode; defaultProgram?: string }) {
   const uid = useId();
@@ -46,7 +46,32 @@ export default function InquiryForm({ mode = "booking", defaultProgram }: { mode
     return e;
   }
 
-  async function onSubmit(ev: React.FormEvent<HTMLFormElement>) {
+  function buildEmail(fd: FormData) {
+    const get = (k: string) => String(fd.get(k) || "").trim();
+    const p = programs.find((x) => x.slug === program);
+    const lines: string[] = [];
+    let subject: string;
+    if (mode === "booking" && p) {
+      subject = `Training inquiry: ${p.name} (${get("name")})`;
+      lines.push(`Hi Coach Kido,`, ``, `I'd like to book training with Kido Hoops Academy.`, ``);
+      lines.push(`Program: ${p.name} (${p.price} ${p.priceUnit})`);
+      if (p.slug === "group-training") lines.push(`Number of kids: ${get("groupSize")}`);
+      else if (get("players")) lines.push(`Number of players: ${get("players")}`);
+    } else {
+      subject = `Website inquiry: ${get("topic") || "General question"} (${get("name")})`;
+      lines.push(`Hi Coach Kido,`, ``, `Topic: ${get("topic") || "General question"}`);
+    }
+    if (get("message")) lines.push(``, mode === "booking" ? `Goals & availability:` : `Message:`, get("message"));
+    lines.push(``, `Name: ${get("name")}`, `Email: ${get("email")}`);
+    if (get("phone")) lines.push(`Phone: ${get("phone")}`);
+    if (mode === "booking") lines.push(``, `I understand court rental is additional and paid separately.`);
+    lines.push(``, `Sent from the Kido Hoops Academy website`);
+    const text = lines.join("\n");
+    const href = `mailto:${site.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+    return { href, text: `To: ${site.contact.email}\nSubject: ${subject}\n\n${text}` };
+  }
+
+  function onSubmit(ev: React.FormEvent<HTMLFormElement>) {
     ev.preventDefault();
     const form = ev.currentTarget;
     const fd = new FormData(form);
@@ -59,32 +84,47 @@ export default function InquiryForm({ mode = "booking", defaultProgram }: { mode
       setStatus({ kind: "idle" });
       return;
     }
-    if (!FORM_ENDPOINT) {
-      setStatus({ kind: "not-connected" });
-      return;
-    }
-    setStatus({ kind: "sending" });
+    const mail = buildEmail(fd);
+    setStatus({ kind: "opened", ...mail });
+    window.location.href = mail.href;
+  }
+
+  const [copied, setCopied] = useState(false);
+  async function copyText(text: string) {
     try {
-      const payload = Object.fromEntries(fd.entries());
-      delete (payload as Record<string, unknown>).company;
-      const res = await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ ...payload, formType: mode }),
-      });
-      if (!res.ok) throw new Error(`Request failed (${res.status})`);
-      form.reset();
-      setStatus({ kind: "ok" });
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2500);
     } catch {
-      setStatus({ kind: "error", msg: "Something went wrong sending your message. Please try again in a moment." });
+      setCopied(false);
     }
   }
 
-  if (status.kind === "ok") {
+  if (status.kind === "opened") {
     return (
       <div className="form-status form-status--ok" role="status" aria-live="polite">
-        <h3>Thanks — inquiry received.</h3>
-        <p>Coach Kido will follow up by email to confirm dates, a court and next steps.</p>
+        <h3>Almost done: press Send in your email app.</h3>
+        <p>
+          We&apos;ve opened a new email to Coach Kido with your details filled in. It isn&apos;t sent until you press{" "}
+          <strong>Send</strong> in your email app.
+        </p>
+        <p style={{ marginTop: "0.75rem" }}>
+          Email app didn&apos;t open?{" "}
+          <a href={status.href} data-mailto>
+            Try again
+          </a>{" "}
+          ·{" "}
+          <button type="button" className="link-btn" onClick={() => copyText(status.text)}>
+            {copied ? "Copied!" : "Copy the message"}
+          </button>{" "}
+          and email it to <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>, or call/text{" "}
+          <a href={`tel:${site.contact.phoneHref}`}>{site.contact.phone}</a>.
+        </p>
+        <p style={{ marginTop: "0.75rem" }}>
+          <button type="button" className="link-btn" onClick={() => setStatus({ kind: "idle" })}>
+            ← Edit my inquiry
+          </button>
+        </p>
       </div>
     );
   }
@@ -218,38 +258,12 @@ export default function InquiryForm({ mode = "booking", defaultProgram }: { mode
         <input id={id("company")} name="company" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <div className="field--full" aria-live="polite">
-        {status.kind === "not-connected" && (
-          <div className="form-status form-status--warn" role="status">
-            <h3>Almost there.</h3>
-            <p>
-              Your details look good, but online inquiries aren&apos;t switched on yet, so nothing has been sent. Please reach
-              Coach Kido directly at <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a> or{" "}
-              <a href={`tel:${site.contact.phoneHref}`}>{site.contact.phone}</a>.
-            </p>
-          </div>
-        )}
-        {status.kind === "error" && (
-          <div className="form-status form-status--err" role="alert">
-            {status.msg}
-          </div>
-        )}
-      </div>
-
       <div className="form-actions field--full">
-        <button type="submit" className="btn" disabled={status.kind === "sending"}>
-          {status.kind === "sending" ? (
-            <>
-              <span className="spinner" aria-hidden="true" /> Sending…
-            </>
-          ) : (
-            <>
-              {mode === "booking" ? "Send training inquiry" : "Send message"} <span className="arrow" aria-hidden="true">→</span>
-            </>
-          )}
+        <button type="submit" className="btn">
+          {mode === "booking" ? "Email my inquiry" : "Email my message"} <span className="arrow" aria-hidden="true">→</span>
         </button>
         <span className="field__hint" style={{ margin: 0 }}>
-          No payment is taken online.
+          Opens your email app, addressed to {site.contact.email}.
         </span>
       </div>
     </form>

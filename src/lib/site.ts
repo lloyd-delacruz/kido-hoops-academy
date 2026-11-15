@@ -14,7 +14,6 @@ export const SITE_URL = (
   (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "") ||
   "http://localhost:3000"
 ).replace(/\/$/, "");
-export const FORM_ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT || "";
 
 export const site = {
   name: "Kido Hoops Academy",
@@ -36,6 +35,14 @@ export const site = {
     email: "cabrerakido@gmail.com" as string | null,
     phone: "(818) 284-5801" as string | null,
     phoneHref: "+18182845801",
+  },
+  // Supplied by the client (15 Nov 2026): Venmo and Zelle both use the coach's phone number.
+  payment: {
+    phoneDisplay: "(818) 284-5801",
+    phoneRaw: "8182845801",
+    // Add the Venmo @username (without "@") to enable a one-tap "Pay with Venmo" link.
+    venmoUsername: null as string | null,
+    payeeName: "Kido Cabrera",
   },
   social: {
     instagram: null as string | null,

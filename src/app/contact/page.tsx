@@ -2,6 +2,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import InquiryForm from "@/components/InquiryForm";
+import PaymentOptions from "@/components/PaymentOptions";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/site";
 import { breadcrumbLd, pageMeta } from "@/lib/seo";
@@ -34,7 +35,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title={<>Let&apos;s <span className="accent nowrap">talk hoops.</span></>}
-        lead="Questions about training, groups or pricing? Call, email or send a message and Coach Kido will get back to you."
+        lead="Questions about training, groups or pricing? Call, text or email Coach Kido, or use the form below. It opens your email app with the message ready to send."
         crumbs={[{ label: "Contact" }]}
       />
       <section className="section">
@@ -71,6 +72,16 @@ export default function ContactPage() {
               <InquiryForm mode="contact" />
             </div>
           </Reveal>
+        </div>
+      </section>
+      <section className="section section--paper2" id="payment" aria-labelledby="pay-title">
+        <div className="container pay-band">
+          <div>
+            <p className="eyebrow">Payment</p>
+            <h2 id="pay-title" className="h2 mt-6">Venmo or Zelle.</h2>
+            <p className="lead mt-6">Pay Coach Kido directly by phone number once your booking is confirmed.</p>
+          </div>
+          <PaymentOptions compact />
         </div>
       </section>
       <JsonLd data={breadcrumbLd([{ name: "Contact", path: "/contact/" }])} />

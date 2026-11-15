@@ -23,7 +23,8 @@ const groups: { title: string; items: { q: string; a: string }[] }[] = [
       },
       { q: "Is there an option besides the group package?", a: "Yes. Hourly training is $50 per person, per hour. A 2-hour session is $100 per person." },
       { q: "Is the court included?", a: "No. Court rental is additional and paid separately from the coach fee." },
-      { q: "Can I pay online?", a: "Not through this website. No payments are taken online — send an inquiry and Coach Kido will follow up with next steps." },
+      { q: "How do I pay?", a: "By Venmo or Zelle, sent directly to Coach Kido's phone number, (818) 284-5801. Pay once Coach Kido has confirmed your booking and the amount, and put your name and program in the payment note. The website itself doesn't take card payments." },
+      { q: "How do I send an inquiry?", a: "Use the form on the Book Training or Contact page. It opens your email app with a message to Coach Kido already written; just press Send. You can also email cabrerakido@gmail.com or call/text (818) 284-5801." },
     ],
   },
   {

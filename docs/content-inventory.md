@@ -54,12 +54,12 @@ These are needed before launch. The UI hides each one until it is filled in `src
 | # | Missing | Impact | Where it goes |
 |---|---|---|---|
 | 1 | ~~Contact email and phone~~ ✅ supplied 15 Nov 2026 | — | `site.contact` → footer, Contact page, JSON-LD |
-| 2 | **Form backend** (Formspree, Netlify Forms, email service…) | Inquiry forms validate but do not send | `NEXT_PUBLIC_FORM_ENDPOINT` |
+| 2 | ~~Form backend~~ ✅ replaced by email hand-off (mailto) to cabrerakido@gmail.com, 15 Nov 2026 | — | `InquiryForm.tsx` |
 | 3 | **Training locations / gyms** (address, parking) | No Schedule & Locations page, no Google Map, no local-business address schema | New `/locations/` page |
 | 4 | **Schedule** (days, times, start dates) | Schedule page not published | `/locations/` or `/programs/` |
 | 5 | **Age groups and skill levels** | Copy says "kids/young players" only | Programs |
 | 6 | **Social media handles** | No social links | `site.social` |
-| 7 | **Cancellation / refund policy and payment methods** | Left out of the FAQ | FAQ, Register |
+| 7 | **Cancellation / refund policy** (payment methods ✅ Venmo & Zelle via (818) 284-5801, supplied 15 Nov 2026) | Refund policy left out of the FAQ | FAQ, Register |
 | 8 | **Academy training photos** (kids training) | All photos are from the coach's pro career | Hero, Gallery |
 | 9 | **Testimonials, partnerships, academy achievements** | None published | Home |
 | 10 | **Production domain** | Canonical URLs, sitemap and OG use `NEXT_PUBLIC_SITE_URL` | `.env` |
@@ -86,3 +86,10 @@ Free photos from **Unsplash** (Unsplash License: free for commercial use, no per
 | Programs band | Three basketballs on a court | ANTIPOLYGON YOUTUBE | https://unsplash.com/photos/three-basketballs-sitting-on-top-of-a-basketball-court-m319Fgwr7Ls |
 
 Replace these with real academy training photos as soon as possible (see requirement #8). Edit `src/lib/stock.ts`.
+
+## 6. Payment (supplied by the client, 15 Nov 2026)
+- Venmo and Zelle, both via the coach's phone number (818) 284-5801. Shown on Book Training (#payment), Contact and in the FAQ.
+- **To confirm with the client:**
+  - His **Venmo @username**, which enables a one-tap pay link (Venmo links need a username, not a phone number).
+  - The **name shown on his Venmo/Zelle accounts**. The site tells payers to check that the recipient is "Kido Cabrera".
+  - Whether "pay after Coach Kido confirms your booking" matches how he wants to take payment (deposit, pay up front, etc.).
