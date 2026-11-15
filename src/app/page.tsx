@@ -43,7 +43,7 @@ export default function Home() {
               Youth basketball training · {site.city}, {site.regionCode}
             </p>
             <h1 id="hero-title" className="hero__title">
-              <span className="line"><span>Hard work</span></span>
+              <span className="line"><span>Hard work</span></span>{" "}
               <span className="line accent"><span>beats talent.</span></span>
             </h1>
             <p className="hero__lead" data-hero-fade>
