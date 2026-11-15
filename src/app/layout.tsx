@@ -10,6 +10,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import Motion from "@/components/Motion";
 import { SITE_URL, site } from "@/lib/site";
 import { organizationLd } from "@/lib/seo";
 
@@ -44,7 +45,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body>
         <a className="skip-link" href="#main">
           Skip to content
@@ -53,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main">{children}</main>
         <Footer />
         <JsonLd data={organizationLd} />
+        <Motion />
       </body>
     </html>
   );

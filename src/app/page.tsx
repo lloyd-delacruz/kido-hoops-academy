@@ -7,6 +7,9 @@ import CourtLines from "@/components/CourtLines";
 import CtaBand from "@/components/CtaBand";
 import HighlightVideo from "@/components/HighlightVideo";
 import JsonLd from "@/components/JsonLd";
+import StockPhoto from "@/components/StockPhoto";
+import PhotoBand from "@/components/PhotoBand";
+import { stock } from "@/lib/stock";
 import { media } from "@/lib/media";
 import { coach, courtRentalNote, developmentAreas, programs, site, skillsFocus } from "@/lib/site";
 import { pageMeta, coachLd } from "@/lib/seo";
@@ -21,29 +24,33 @@ export const metadata: Metadata = {
   title: { absolute: "Kido Hoops Academy | Youth Basketball Training in Los Angeles" },
 };
 
-const d = (s: number) => ({ "--delay": `${s}s` }) as React.CSSProperties;
-
 export default function Home() {
   const [group, hourly] = programs;
   return (
     <>
       {/* ---------- HERO ---------- */}
-      <section className="hero" aria-labelledby="hero-title">
+      <section className="hero" aria-labelledby="hero-title" data-hero>
+        <div className="hero__photo" aria-hidden="true">
+          <Photo media={media.layup} priority sizes="(min-width: 1000px) 62vw, 100vw" alt="" />
+        </div>
         <CourtLines />
-        <div className="container hero__grid">
-          <div>
-            <p className="eyebrow hero-in" style={d(0)}>
+        <div className="container hero__inner">
+          <div className="hero__content">
+            <p className="hero__chip" data-hero-fade>
+              <span>2010 Player of the Year</span> North Hollywood HS · Former MPBL pro
+            </p>
+            <p className="eyebrow" data-hero-fade>
               Youth basketball training · {site.city}, {site.regionCode}
             </p>
             <h1 id="hero-title" className="hero__title">
-              <span className="line hero-in" style={d(0.08)}>Hard work</span>
-              <span className="line hero-in accent" style={d(0.16)}>beats talent.</span>
+              <span className="line"><span>Hard work</span></span>
+              <span className="line accent"><span>beats talent.</span></span>
             </h1>
-            <p className="hero__lead hero-in" style={d(0.26)}>
+            <p className="hero__lead" data-hero-fade>
               Skills training for young players led by former professional Coach Kido Cabrera — ball handling, footwork,
               shooting, passing and the basketball IQ to use them in a real game.
             </p>
-            <div className="btn-row hero-in" style={d(0.34)}>
+            <div className="btn-row" data-hero-fade>
               <Link href="/register/" className="btn">
                 Book training <span className="arrow" aria-hidden="true">→</span>
               </Link>
@@ -51,25 +58,17 @@ export default function Home() {
                 Programs &amp; pricing
               </Link>
             </div>
-            <ul className="hero__meta hero-in" style={d(0.42)}>
+            <ul className="hero__meta" data-hero-fade>
               <li>Groups of 5–10 kids</li>
               <li>From $10 per child / hour</li>
-              <li>Former MPBL pro</li>
+              <li>Los Angeles</li>
             </ul>
           </div>
-
-          <div className="hero__media hero-in" style={d(0.2)}>
-            <div className="hero__slab" aria-hidden="true" />
-            <div className="hero__frame">
-              <Photo media={media.layup} priority sizes="(min-width: 1000px) 520px, 92vw" />
-            </div>
-            <p className="hero__caption" aria-hidden="true">Coach Kido · Pro career</p>
-            <div className="hero__badge">
-              <span>North Hollywood HS</span>
-              <strong>2010 Player of the Year</strong>
-            </div>
-          </div>
         </div>
+        <p className="hero__caption" aria-hidden="true">Coach Kido Cabrera · Pro career</p>
+        <a href="#intro-title" className="hero__scroll" aria-label="Scroll to learn more">
+          <span aria-hidden="true" />
+        </a>
       </section>
 
       <Marquee words={[...skillsFocus, "Defense", "Basketball IQ"]} />
@@ -98,12 +97,14 @@ export default function Home() {
               </div>
             </div>
           </Reveal>
-          <Reveal delay={0.1}>
-            <figure className="figure" style={{ aspectRatio: "4 / 5" }}>
-              <Photo media={media.dribble} sizes="(min-width: 900px) 40vw, 100vw" style={{ objectPosition: "45% 40%" }} />
-              <figcaption>Coach Kido on the attack</figcaption>
+          <div className="duo">
+            <figure className="figure" data-clip>
+              <StockPhoto image={stock.girlWithBall} fallback={media.dribble} sizes="(min-width: 900px) 22vw, 50vw" />
             </figure>
-          </Reveal>
+            <figure className="figure" data-clip>
+              <StockPhoto image={stock.boyBallOverhead} fallback={media.jumper} sizes="(min-width: 900px) 22vw, 50vw" />
+            </figure>
+          </div>
         </div>
       </section>
 
@@ -192,11 +193,18 @@ export default function Home() {
         </div>
       </section>
 
+      <PhotoBand
+        image={stock.ballUnderRing}
+        fallback={media.drive}
+        title="Put in the work."
+        sub="Every session is built around reps, detail and game-like situations — the habits that separate good players from complete ones."
+      />
+
       {/* ---------- COACH ---------- */}
       <section className="section" aria-labelledby="coach-title">
         <div className="container split">
           <Reveal>
-            <figure className="figure" style={{ aspectRatio: "3 / 4", maxWidth: 520 }}>
+            <figure className="figure" style={{ aspectRatio: "3 / 4", maxWidth: 520 }} data-clip>
               <Photo media={media.valenzuela} sizes="(min-width: 900px) 40vw, 100vw" style={{ objectPosition: "45% 60%" }} />
               <figcaption>Valenzuela Classic · MPBL</figcaption>
             </figure>
@@ -253,19 +261,19 @@ export default function Home() {
             <p className="eyebrow">How booking works</p>
             <h2 id="how-title" className="h2">From inquiry to the court.</h2>
           </Reveal>
-          <ol className="steps">
-            <Reveal as="li" className="step">
+          <ol className="steps" data-stagger>
+            <li className="step">
               <h3>Gather your group</h3>
               <p>Bring together 5–10 kids for the package — teammates, friends or siblings — or book by the hour.</p>
-            </Reveal>
-            <Reveal as="li" className="step" delay={0.08}>
+            </li>
+            <li className="step">
               <h3>Send an inquiry</h3>
               <p>Tell us which option you want, how many players and what days generally work. Coach Kido follows up to confirm.</p>
-            </Reveal>
-            <Reveal as="li" className="step" delay={0.16}>
+            </li>
+            <li className="step">
               <h3>Get on the court</h3>
               <p>Confirm your dates — court rental is additional and paid separately — then put in the work with Coach Kido.</p>
-            </Reveal>
+            </li>
           </ol>
         </div>
       </section>

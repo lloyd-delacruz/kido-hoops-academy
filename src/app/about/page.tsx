@@ -4,6 +4,9 @@ import Reveal from "@/components/Reveal";
 import Photo from "@/components/Photo";
 import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
+import StockPhoto from "@/components/StockPhoto";
+import PhotoBand from "@/components/PhotoBand";
+import { stock } from "@/lib/stock";
 import { media } from "@/lib/media";
 import { site } from "@/lib/site";
 import { breadcrumbLd, pageMeta } from "@/lib/seo";
@@ -49,10 +52,15 @@ export default function AboutPage() {
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <figure className="figure" style={{ aspectRatio: "1 / 1" }}>
-              <Photo media={media.bench} sizes="(min-width: 900px) 40vw, 100vw" />
-              <figcaption>Team first</figcaption>
-            </figure>
+            <div className="duo">
+              <figure className="figure" data-clip>
+                <Photo media={media.bench} sizes="(min-width: 900px) 20vw, 50vw" />
+                <figcaption>Team first</figcaption>
+              </figure>
+              <figure className="figure" data-clip>
+                <StockPhoto image={stock.boyBallOverhead} fallback={media.ready} sizes="(min-width: 900px) 20vw, 50vw" />
+              </figure>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -83,25 +91,32 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <PhotoBand
+        image={stock.underHoop}
+        fallback={media.transition}
+        title="Next generation."
+        sub="Passing on what it takes — on and off the court."
+      />
+
       <section className="section" aria-labelledby="why-title">
         <div className="container">
           <Reveal className="section-head">
             <p className="eyebrow">Why Kido Hoops</p>
             <h2 id="why-title" className="h2">Why families choose us</h2>
           </Reveal>
-          <ol className="steps">
-            <Reveal as="li" className="step">
+          <ol className="steps" data-stagger>
+            <li className="step">
               <h3>Coached by a former pro</h3>
               <p>Lessons from high school MVP seasons, college ball in the Philippines and professional competition in the MPBL and FIBA 3x3.</p>
-            </Reveal>
-            <Reveal as="li" className="step" delay={0.08}>
+            </li>
+            <li className="step">
               <h3>Complete-player focus</h3>
               <p>Handles, footwork, shooting, passing, defense and IQ — skills that carry into real games.</p>
-            </Reveal>
-            <Reveal as="li" className="step" delay={0.16}>
+            </li>
+            <li className="step">
               <h3>Clear, fair pricing</h3>
               <p>A flat $800 group package for 5–10 kids, or $50 per person per hour. Court rental is the only extra.</p>
-            </Reveal>
+            </li>
           </ol>
           <div className="btn-row mt-8">
             <Link href="/programs/" className="btn">See programs <span className="arrow" aria-hidden="true">→</span></Link>

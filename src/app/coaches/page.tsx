@@ -29,7 +29,7 @@ export default function CoachesPage() {
       <section className="section" aria-labelledby="bio-title">
         <div className="container split">
           <Reveal>
-            <div className="coach-hero-img">
+            <div className="coach-hero-img" data-clip>
               <Photo media={media.valenzuela} priority sizes="(min-width: 900px) 460px, 100vw" />
             </div>
           </Reveal>
@@ -47,10 +47,10 @@ export default function CoachesPage() {
           </Reveal>
         </div>
         <div className="container">
-          <div className="stat-row">
-            <div className="stat"><strong>2010</strong><span>Player of the Year · North Hollywood HS</span></div>
-            <div className="stat"><strong>2×</strong><span>Back-to-back MVP</span></div>
-            <div className="stat"><strong>#2</strong><span>Scorer · University of Cebu</span></div>
+          <div className="stat-row" data-stagger>
+            <div className="stat"><strong data-count>2010</strong><span>Player of the Year · North Hollywood HS</span></div>
+            <div className="stat"><strong data-count>2×</strong><span>Back-to-back MVP</span></div>
+            <div className="stat"><strong data-count>#2</strong><span>Scorer · University of Cebu</span></div>
             <div className="stat"><strong>Pro</strong><span>MPBL &amp; FIBA 3x3</span></div>
           </div>
         </div>

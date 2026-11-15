@@ -38,3 +38,10 @@ Every price, program detail and coach claim is centralised in `src/lib/site.ts` 
 3. Production domain (`NEXT_PUBLIC_SITE_URL`). Canonicals and the sitemap currently fall back to `http://localhost:3000`.
 4. Client sign-off on the coach bio (a ChatGPT draft) and on rights to the MPBL photos and broadcast clip.
 5. Training locations and schedule (for the Schedule & Locations page and Google Maps).
+
+## Update: motion, photos and responsiveness (15 Nov 2026)
+- Re-tested all 9 content pages at **320, 375, 768, 1024, 1280, 1920 and 2560px wide, plus an 844×390 landscape phone**, with animations running and every page scrolled end to end.
+- Result: no horizontal overflow, no content left hidden after animations, no broken images, no console errors.
+- Hero verified visually at every width: the headline, copy and CTA stay layered on the photo; nothing separates or drops below the image.
+- Reduced-motion mode: the hero renders fully with no transforms.
+- Unsplash images couldn't load in the test environment (network-restricted), so the client-photo fallback was exercised; they load normally on the open web.

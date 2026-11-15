@@ -51,7 +51,7 @@ export default function Footer() {
         <div className="footer-wordmark" aria-hidden="true">Kido Hoops</div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span>
-          <span>Gather your group. Train with Coach Kido.</span>
+          <span>Some photos courtesy of <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>. Gather your group. Train with Coach Kido.</span>
         </div>
       </div>
     </footer>

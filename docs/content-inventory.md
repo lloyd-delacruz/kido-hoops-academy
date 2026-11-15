@@ -72,3 +72,17 @@ These are needed before launch. The UI hides each one until it is filled in `src
 - **Team name**: the bio names the Valenzuela Classic, but most game photos show "Imus Agimat" MPBL jerseys. The site only names the Valenzuela Classic, which appears in both the bio and the photos. Confirm whether Imus Agimat should be added.
 - **Photo and video rights**: the game photos carry MPBL, team and sponsor watermarks and a photographer handle (`@cdubalob` on IMG_0413). The video is TV broadcast footage. Confirm permission, or replace with academy-owned media.
 - The pricing flyer image looks AI-generated. The figures are used exactly as shown; confirm they are current.
+
+## 5. Stock photography (added 15 Nov 2026 at the client's request)
+
+Free photos from **Unsplash** (Unsplash License: free for commercial use, no permission required). They're loaded from Unsplash's image CDN, which is how the license expects them to be served, and credited on-page and in the footer. **They are illustrative only. The people shown are not academy players.** If the CDN can't load, each one falls back to a client photo (and the credit is hidden).
+
+| Use | Photo | Photographer | Unsplash page |
+|---|---|---|---|
+| Home intro, About story | Young girl holding a basketball | Shrikant Ambawale | https://unsplash.com/photos/a-young-girl-holding-a-basketball-on-a-basketball-court-E5wiUpxYcAM |
+| Home intro, About story | Young boy holding a basketball overhead | Shrikant Ambawale | https://unsplash.com/photos/a-young-boy-holding-a-basketball-over-his-head-CmCGabaesec |
+| Home "Put in the work" band | Ball under a hoop | Markus Spiske | https://unsplash.com/photos/ball-under-basketball-ring-BfphcCvhl6E |
+| About "Next generation" band | People under a hoop | Damon Lam | https://unsplash.com/photos/people-standing-under-basketball-hoop-gl-KCAEc7mo |
+| Programs band | Three basketballs on a court | ANTIPOLYGON YOUTUBE | https://unsplash.com/photos/three-basketballs-sitting-on-top-of-a-basketball-court-m319Fgwr7Ls |
+
+Replace these with real academy training photos as soon as possible (see requirement #8). Edit `src/lib/stock.ts`.

@@ -44,8 +44,21 @@ Ratio guide: ~60% navy/paper, ~25% white, ~10% orange, ~5% gold. Orange is for e
 - **Photography**: rounded frames, slight rotation and an orange offset slab in the hero; bottom gradient fades for caption legibility.
 
 ## Motion
-- Purposeful only: content fades up on scroll (0.8s ease-out), the hero staggers in, the skills marquee runs, cards lift on hover.
-- Everything respects `prefers-reduced-motion`: animation is off and the video doesn't autoplay.
+Built with **GSAP + ScrollTrigger** (free, standard license) in `src/components/Motion.tsx`, driven by data attributes:
+- Hero: the photo slowly zooms in on load and drifts on scroll (parallax); the headline lines slide up out of a mask, then the chip, copy and buttons fade up in sequence.
+- `data-clip`: photos wipe up into view with a slight zoom-out.
+- `data-parallax`: full-bleed photo bands drift against the scroll; the band headline slides sideways (`data-slide-x`).
+- `data-count`: coach stats count up (2010, 2×, #2).
+- `data-stagger`: step cards and stats rise in sequence.
+- Also: content fades up on scroll, the skills marquee runs, cards lift on hover.
+- Everything respects `prefers-reduced-motion`: animation is off and the video doesn't autoplay. If scripts fail, a CSS safety net reveals the hero text after 2.5s.
+
+## Hero composition
+Photo and headline form one locked composition at every size:
+- **Phones (< 700px):** the photo fills the top ~70% of the hero; the text sits over a navy fade that rises from the bottom.
+- **Tablets (700–999px):** same, with a taller photo.
+- **Landscape phones:** the photo moves right and the text left, side by side.
+- **Desktop (≥ 1000px):** the photo bleeds off the right edge and fades into navy behind the headline.
 
 ## Voice
 Confident, direct, work-ethic driven. Short declarative headlines ("Hard work beats talent.", "Two ways to train."). Speak to players (skills, confidence) and parents (former pro coach, clear pricing). Never invent stats, testimonials or claims.

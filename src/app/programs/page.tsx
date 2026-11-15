@@ -4,6 +4,8 @@ import Reveal from "@/components/Reveal";
 import Photo from "@/components/Photo";
 import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
+import PhotoBand from "@/components/PhotoBand";
+import { stock } from "@/lib/stock";
 import { media } from "@/lib/media";
 import { courtRentalNote, developmentAreas, programs, skillsFocus, SITE_URL } from "@/lib/site";
 import { breadcrumbLd, pageMeta } from "@/lib/seo";
@@ -88,6 +90,8 @@ export default function ProgramsPage() {
           </Reveal>
         </div>
       </section>
+
+      <PhotoBand image={stock.threeBalls} fallback={media.baseline} title="Handles. Footwork." sub="Shooting and passing too — every session, every player." />
 
       <section className="section section--navy" aria-labelledby="focus-title">
         <div className="container">
