@@ -106,3 +106,10 @@ New flyer (`public/assets/programs/group-training-package-flyer-2026-11-384.*`) 
 ## 8. Domain & SEO (15 Nov 2026)
 - Official domain supplied by the client: **kidohoopsacademy.com**, hard-coded as `PRODUCTION_URL` in `src/lib/site.ts`.
 - New page `/kids-basketball-training-los-angeles/` uses only verified facts. See `docs/seo-plan.md` for the off-site checklist.
+
+## 9. Domain connected (15 Nov 2026)
+- Vercel: `kidohoopsacademy.com` set as the production domain; `www.kidohoopsacademy.com` 308-redirects to it.
+- Porkbun DNS:
+  - The bare-domain ALIAS (parking, `uixie.porkbun.com`) was changed to **A → 216.198.79.1**.
+  - Added **CNAME www → df681a391c4a43d4.vercel-dns-017.com**.
+  - Kept: MX/SPF email forwarding records, `_acme-challenge` TXT records, and the `*` wildcard CNAME (other subdomains only).
